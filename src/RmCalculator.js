@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import './App.css';
+import "./App.css";
 
 function RmCalculator({ slots, setSlots }) {
   const [slot, setSlot] = useState({
     weight: 0,
     reps: 0,
-    max: 0
+    max: 0,
   });
 
   function handleChange(event) {
@@ -20,10 +20,9 @@ function RmCalculator({ slots, setSlots }) {
   }
 
   function handleSubmit() {
-    
     const weight = slot.weight;
     const reps = slot.reps;
-    const max = (Math.round(weight*(1 + reps/30)));
+    const max = Math.round(weight * (1 + reps / 30));
     const newSlot = { ...slot, max: max };
 
     setSlot(newSlot);
@@ -41,20 +40,13 @@ function RmCalculator({ slots, setSlots }) {
         type="text"
         placeholder="Weight"
         onChange={handleChange}
-     />
+      />
 
-      <input
-        id="reps"
-        type="text"
-        placeholder="reps"
-        onChange={handleChange}
-     />
+      <input id="reps" type="text" placeholder="reps" onChange={handleChange} />
 
-     <button onClick={handleSubmit}>Calculate</button>
-      
+      <button onClick={handleSubmit}>Calculate</button>
     </div>
-  )
-
+  );
 }
 
 export default RmCalculator;
